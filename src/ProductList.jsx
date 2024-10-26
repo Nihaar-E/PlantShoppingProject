@@ -292,7 +292,7 @@ const handlePlantsClick = (e) => {
                                             <img src={plant.image} alt = {plant.name} />
                                         </div>
                                         <div className='plant-description'>{plant.description}</div>
-                                        <div className='plant-cost'>${plant.cost}</div>
+                                        <div className='plant-cost'>{plant.cost}</div>
                                         <button className='addtocart-button' onClick={() => handleAddToCart(plant)}>Add TO Cart</button>
                                     </div>
                                 ))
