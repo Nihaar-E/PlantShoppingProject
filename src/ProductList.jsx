@@ -1,9 +1,12 @@
+
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import { addItem } from './CartSlice';
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [addedToCart , setAddedToCart] = useState({});
 
     const plantsArray = [
         {
@@ -246,6 +249,14 @@ const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowCart(false);
   };
+  const handleAddToCart = (plant) => {
+    dispatch(addItem(plant));
+    setAddedToCart((prevState) => ({
+        ...prevState,
+        [plant.name] : true,
+    }));
+
+  };
     return (
         <div>
              <div className="navbar" style={styleObj}>
@@ -268,6 +279,31 @@ const handlePlantsClick = (e) => {
         </div>
         {!showCart? (
         <div className="product-grid">
+            {
+                plantsArray.map((cat , index) => (
+                    <div className='plants-category' key={index}>
+                        <div className='category-name'><h1>{cat.category}</h1></div>
+                        <div className='category-plants-list'>
+                            {
+                                cat.plants.map((plant , index) =>(
+                                    <div className='plant' key ={index}>
+                                        <div className='plant-name'>{plant.name}</div>
+                                        <div className='plant-image'>
+                                            <img src={plant.image} alt = {plant.name} />
+                                        </div>
+                                        <div className='plant-description'>{plant.description}</div>
+                                        <div className='plant-cost'>${plant.cost}</div>
+                                        <button className='addtocart-button' onClick={() => handleAddToCart(plant)}>Add TO Cart</button>
+                                    </div>
+                                ))
+                            }
+
+
+                        </div>
+                    </div>
+                )
+            )
+            }
 
 
         </div>
