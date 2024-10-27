@@ -13,7 +13,7 @@ const CartItem = ({ onContinueShopping }) => {
     cart.map((item) => {
         totalCost += item.quantity * parseInt(item.cost.slice(1));
         
-    });
+    })
     return totalCost;
  
   };
@@ -33,13 +33,11 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-    item.quantity--;
-    if (item.quantity > 0) {
-        dispatch(updateQuantity({name:item.name, quantity:item.quantity}));
-    }
-    else {
+    if(item.quantity===1){
         dispatch(removeItem(item.name));
-    }
+      } else{
+        dispatch(updateQuantity({name:item.name,quantity:item.quantity-1}));
+      }
    
   };
 

@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Nihaar-E.github.io/",
+  "homepage": "https://Nihaar-E.github.io/plantShoppingProject",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "build": "vite build",
     "clean": "rm -rf dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite build; vite preview --host"

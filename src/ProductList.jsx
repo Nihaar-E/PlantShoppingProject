@@ -299,7 +299,7 @@ const handlePlantsClick = (e) => {
                                         <div className='plant-cost'>{plant.cost}</div>
                                         {
                                             !items.find(addingItem => addingItem.name === plant.name)?
-                                            (<button className='product-button' onClick={() => handleAddToCart(plant)}>Add TO Cart</button>)
+                                            (<button className='product-button' onClick={() => handleAddToCart(plant)}>Add To Cart</button>)
                                             :(<h3 className='product-button added-to-cart'>Added TO Cart</h3>)
                                         }
                                         
